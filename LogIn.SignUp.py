@@ -291,22 +291,7 @@ def sign_up():
             else:
                 if k:
                     if is_valid_gmail(d):
-                        d = Gmail.get()
-                        dd = int(code())
-                        k = f'Your Verification code is {dd}, if you accendentally got this meassage, just ignore/delete it'
-                        send_email(d, "Your Verification Code", k)
-                        def jj(osa):
-                            if osa == 1:
-                                msg = customtkinter.CTkInputDialog(title="Authentication", text= f"We sent You a Code on your Gmail Please type the code")
-                            msg = msg
-                            hg = msg.get_input()
-                            if dd == int(hg):
-                                    Add_Data()
-                            else:
-                                msg = customtkinter.CTkInputDialog(title="Authentication", text= f"Wrong Code! Please type the code")
-                                hg = msg.get_input()
-                                jj(0)
-                        jj(1)
+                        Add_Data()
                     else:
                         msg = CTkMessagebox(title="Invalid Gmail", message="Please enter a valid Gmail address (e.g., name@gmail.com)", icon="warning")
                         msg.show()
