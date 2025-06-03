@@ -65,7 +65,7 @@ def code():
 salt = bcrypt.gensalt()
 
 #connection/setup
-connection = sqlite3.connect("passwod.db")
+connection = sqlite3.connect("password.db")
 cursor = connection.cursor()
 
 #creates table
