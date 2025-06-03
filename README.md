@@ -1,2 +1,2 @@
 # Log_in-Sign_up
-A simple Log in and Sign up made using Customtkinter for gui, Bcrypt for encryption, and Smtp for verification.  With functions as able to delete account, add info, retrieve info, change profile picture, etc....
+A simple login and sign-up made using Customtkinter for GUI, Bcrypt for encryption, and SMTP for verification. With functions as able to delete account, add info, retrieve info, and change profile pictures, this was my experimental project for databases, gui, and sending emails, which i am quite happy with. I hope you like my project :).
