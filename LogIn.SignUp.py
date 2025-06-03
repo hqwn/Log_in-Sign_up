@@ -139,7 +139,7 @@ def log_in():
         if d and d != ('',):
             path = d[0]
         else:
-            path = 'C:/aryan/python/images.jpg'
+            path = 'images.jpg'
         profile = customtkinter.CTkImage(light_image=Image.open(path), dark_image=Image.open(path), size=(50,50))
         hh = customtkinter.CTkButton(bb, text="Submit", command=submits, width=350)
         labels = customtkinter.CTkButton(bb,  image=profile, command=image_click, text='', fg_color="transparent",  hover=False,border_width=0,corner_radius=50 )
