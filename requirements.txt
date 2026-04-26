@@ -1,0 +1,6 @@
+customtkinter
+CTkMessagebox
+bcrypt
+pillow
+python-dotenv
+icecream

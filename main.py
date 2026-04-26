@@ -80,6 +80,19 @@ def show_database():
 
     for row in rows:
         ic(row)
+
+
+#destroys old widgets and goes back to home page
+def go_home():
+    global button, button2
+    for widget in bb.winfo_children():
+        widget.destroy()
+    app.geometry("165x200")
+    button = customtkinter.CTkButton(bb, text="Sign up", command=sign_up, height=50, width=150)
+    button2 = customtkinter.CTkButton(bb, text="Log in", command=log_in, height=50, width=150)
+    button.grid(row=0, column=0, padx=10, pady=20, sticky="nsew")
+    button2.grid(row=1, column=0, padx=10, pady=20, sticky="nsew")
+
 #Log In code
 def log_in():
 
@@ -131,6 +144,7 @@ def log_in():
         label2.destroy()
         text.destroy()
         text2.destroy()
+        login_back.destroy()
         app.geometry("600x600")
         cursor.execute("select pic from user_data where name = (?)", (content,))
 
@@ -139,7 +153,7 @@ def log_in():
         if d and d != ('',):
             path = d[0]
         else:
-            path = 'images.jpg'
+            path = 'images/pfp.jpg'
         profile = customtkinter.CTkImage(light_image=Image.open(path), dark_image=Image.open(path), size=(50,50))
         hh = customtkinter.CTkButton(bb, text="Submit", command=submits, width=350)
         labels = customtkinter.CTkButton(bb,  image=profile, command=image_click, text='', fg_color="transparent",  hover=False,border_width=0,corner_radius=50 )
@@ -147,13 +161,14 @@ def log_in():
         c3 = customtkinter.CTkCheckBox(bb, text="Retrieve Info")
         edit = customtkinter.CTkTextbox(bb, width= 300)
         lop = customtkinter.CTkLabel(bb, text=f"Hello, {content}\n what would you like to Do? Type in the box if you want to \nchange Your Info")
-        labels.grid(pady=20, padx=0,column=0, row=0)
-        edit.grid(pady=10, padx=10, column=1, rowspan=2)
-        hh.grid(pady=10, padx=10,  row=4, columnspan=4)
-        lop.grid(pady=0, padx=10,column=1, row=0)
-        c1.grid(pady=5, padx=10,column=0, row=1)
-        c3.grid(pady=5, padx=10,column=0, row=2)
-
+        labels.grid(pady=20, padx=0, column=0, row=0)
+        lop.grid(pady=0, padx=10, column=1, row=0)
+        c1.grid(pady=5, padx=10, column=0, row=1)
+        c3.grid(pady=5, padx=10, column=0, row=2)
+        edit.grid(pady=10, padx=10, column=1, row=1, rowspan=2)
+        hh.grid(pady=10, padx=10, row=3, column=0, columnspan=2, sticky="ew")
+        back_btn = customtkinter.CTkButton(bb, text="Back", width=350, command=go_home)
+        back_btn.grid(pady=5, padx=10, row=4, column=0, columnspan=2, sticky="ew")
     def Password_Valid(): 
         def p(dds, hg, om, op):
             #if time.monotonic() < om:
@@ -235,17 +250,19 @@ def log_in():
 
 
 
-
+    global login_back
     label = customtkinter.CTkLabel(bb, text="Enter username")
     label2 = customtkinter.CTkLabel(bb, text="Enter password")
     text = customtkinter.CTkEntry(bb, width=220, placeholder_text="Enter Username")
     text2 = customtkinter.CTkEntry(bb, width=220, placeholder_text="Enter Password", show='*')
     submit = customtkinter.CTkButton(bb, text="Submit", width=180, height=40, command=User_exists)
+    login_back = customtkinter.CTkButton(bb, text="Back", width=180, height=40, command=go_home)
     label.grid(row=0,column=2,sticky="nsew")
     label2.grid(row=2,column=2,sticky="nsew")
     text.grid(row=1,column=2,padx=20,pady=20,sticky="nsew")
     text2.grid(row=3,column=2,padx=20,pady=20,sticky="nsew")
     submit.grid(row=4, column=2)
+    login_back.grid(row=5, column=2)
     app.geometry("265x280")
     button.destroy()
     button2.destroy()
@@ -306,6 +323,8 @@ def sign_up():
     stext2 = customtkinter.CTkEntry(bb, width=220, placeholder_text="Enter a Password", show='*')
     stext3 = customtkinter.CTkTextbox(bb, width=250, height=100)
     ssubmit = customtkinter.CTkButton(bb, text="Submit", width=180, height=40, command=Validation)
+    back = customtkinter.CTkButton(bb, text="Back", width=180, height=40, command=go_home)
+    back.grid(row=9, column=2, pady=5)
     slabel.grid(row=0,column=2,sticky="nsew")
     slabel2.grid(row=2,column=2,sticky="nsew")
     Glabel.grid(row=4,column=2,sticky="nsew")
